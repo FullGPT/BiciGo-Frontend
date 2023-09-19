@@ -7,7 +7,7 @@ import { UserModule } from '../models/user.module';
   providedIn: 'root',
 })
 export class UserService {
-  base_Url = 'https://quipu.onrender.com/api/leadyourway/v1/users';
+  base_Url = 'https://bicigo-service.onrender.com/api/leadyourway/v1/users';
   httpOptions = this.getHttpOptions(); // Agregar la propiedad httpOptions
 
   constructor(private http: HttpClient) {}
