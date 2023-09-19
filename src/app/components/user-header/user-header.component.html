@@ -1,0 +1,25 @@
+<header class="pb-3 mb-4">
+  <nav class="navbar navbar-expand-md navbar-light d-flex justify-content-between" id="navbar-menu">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/images/LogoLYW_2023-icon-removebg.png" alt="brand logo" width="50" />
+    </a>
+    <button class="navbar-toggler btn mx-4 btn-outline-dark nav-item" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse text-center">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/home">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/search">Buscar</a>
+        </li>
+      </ul>
+      <div class="btn-end" *ngIf="userLoggedIn">
+        <a class="btn nav-item btn-outline-primary mx-3" href="/profile" id="btn-profile">Perfil</a>
+      </div>
+      <div class="btn-end" *ngIf="!userLoggedIn">
+        <a class="btn nav-item btn-outline-primary mx-3" href="/login"> Iniciar Sesión </a>
+        <a class="btn nav-item bg-dark text-light m-3" href="/signup"> Registrarse </a>
+      </div>
+    </div>
+  </nav>
+</header>
