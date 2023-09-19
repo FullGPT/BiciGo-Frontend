@@ -1,10 +1,10 @@
-# LeadYourWay
+# BiciGo
 
-Lead Your Way (LYW) is an application designed to help you find a bike at any time and place. With a wide selection of types, models, and ranges to choose from, LYW will allow you to enjoy your favorite activities, whether it's sports, transportation, or even racing.
+BiciGo is an application designed to help you find a bike at any time and place. With a wide selection of types, models, and ranges to choose from, BiciGo will allow you to enjoy your favorite activities, whether it's sports, transportation, or even racing.
 
 The platform has been designed to help you find exactly what you need quickly, easily, and securely. Bike rentals can be made through direct contact with the provider, making delivery of the product easier.
 
-Visit our website [here](https://lead-your-way-opensource.web.app/home)
+Visit our website [here](https://lead-your-way.netlify.app/home)
 
 ## Technologies Used
 
@@ -13,8 +13,8 @@ Visit our website [here](https://lead-your-way-opensource.web.app/home)
 
 ## Installation Instructions
 
-1. Clone the repository from GitHub: `git clone https://github.com/lucas1336/LeadYourWay-OpenSource.git`
-2. Navigate to the project directory: `cd LeadYourWay-OpenSource`
+1. Clone the repository from GitHub: `git clone https://github.com/FullGPT/BiciGo-Frontend.git`
+2. Navigate to the project directory: `cd BiciGo-Frontend`
 3. Install the project dependencies: `npm install`
 4. Start the development server: `ng serve`
 5. Open your browser and navigate to http://localhost:4200
@@ -45,8 +45,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Collaborators
 
-- [Lucas Ruiz](https://github.com/lucas1336/)
-- [Leonel Ortega](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-- [Oliver Tuesta](https://github.com/oliverTuesta)
+- [Lucas Benedetti](https://github.com/u201817461)
+- [Josty Tafur](https://github.com/JostyTafur)
+- [Alejandro Zárate](https://github.com/AlejandroZarateGamarra)
 - [Sofia Alfaro](https://github.com/asofialf)
-- [Fabrizzio Castro](https://github.com/FabrizCastro)
+- [Diego Merino]()
