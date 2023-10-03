@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserDtoModule } from 'src/app/models/userDto.module';
 import { UserModule } from 'src/app/models/user.module';
-import { AuthService, UserService } from 'src/app/services/user.service';
+import {UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -50,7 +51,7 @@ export class SignupComponent {
       currentDate.getMonth(),
       currentDate.getDate()
     );
-    this.RegisterData.userBirthDate = '1999-01-01';
+    /*this.RegisterData.userBirthDate = '1999-01-01';
     this.RegisterData.imageData = 'https://robohash.org/' + this.RegisterData.userFirstName;
     this.authService.register(this.RegisterData).subscribe(
       (response) => {
@@ -65,7 +66,7 @@ export class SignupComponent {
       (error) => {
         this.firstTry = false;
       }
-    );
+    );*/
   }
 
   validateStart() {
