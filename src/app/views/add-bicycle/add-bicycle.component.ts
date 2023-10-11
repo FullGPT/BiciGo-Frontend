@@ -47,17 +47,6 @@ export class AddBicycleComponent {
 
   ngOnInit() {
     this.userService.getItem(this.id).subscribe(
-      (data) => {
-        if (data.cards.length <= 0) {
-          const dialogRef: MatDialogRef<any> = this.dialog.open(DialogBoxComponent, {
-            data: {
-              title: 'Error',
-              message: 'Para publicar una bicicleta debe tener una tarjeta registrada',
-            },
-          });
-          this.router.navigate(['/profile']);
-        }
-      },
       (error) => {
         const dialogRef: MatDialogRef<any> = this.dialog.open(DialogBoxComponent, {
           data: {
