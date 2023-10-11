@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { BicycleModule } from 'src/app/models/bicycle.module';
 import { BicycleService } from 'src/app/services/bicycle.service';
 import { Router } from '@angular/router';
-import { UserModule } from 'src/app/models/user.module';
 import { UserService } from 'src/app/services/user.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -83,15 +82,7 @@ export class BicycleDetailComponent {
 
   onReserve() {
     this.userService.getItem(this.userId).subscribe((response: any) => {
-      var userInfo = response.cards.length;
-      if (userInfo > 0) {
         this.router.navigate(['/reservation']);
-      } else {
-        alert(
-          'Para reservar debes agregar una tarjeta\nSera redirigido a su perfil para agregar una tarjeta'
-        );
-        this.router.navigate(['/profile']);
-      }
     });
   }
 }
