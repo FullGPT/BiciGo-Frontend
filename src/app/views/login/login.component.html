@@ -31,7 +31,14 @@
           <label class="form-check-label" for="rememberMe" style="font-size: small; color: #a02108">Su correo o contraseña esta incorecta</label>
         </div>
         <div class="btnIniciarDiv">
-          <button type="submit" class="btn btn-primary btnIniciar" (click)="onSubmit()">Iniciar</button>
+          <div *ngIf="!loading; else elseBlock">
+            <button type="submit" class="btn btn-primary btnIniciar" (click)="onSubmit()">Iniciar</button>
+          </div>
+          <ng-template #elseBlock>
+            <div class="spinner mt-4">
+              <mat-progress-spinner mode="indeterminate" [diameter]="25"></mat-progress-spinner>
+            </div>
+          </ng-template>
           <div class="d-flex mt-4">
             <p style="margin-right: 5px;">¿No tienes cuenta? Registrate</p><a routerLink="/signup" style="color: #e16f58; font-size: 15px; display: block">Aqui</a>
           </div>

@@ -24,3 +24,15 @@ button {
   width: 100%;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e16f58;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.mat-mdc-progress-spinner { 
+  --mdc-circular-progress-active-indicator-color: rgb(255, 255, 255); 
+}

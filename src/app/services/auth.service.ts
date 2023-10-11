@@ -31,7 +31,7 @@ export class AuthService {
     return this.httpClient.post<any>(this.authURL + 'register', newUser)
     .pipe(
       retry(2),
-      catchError(this.handleError));;
+      catchError(this.handleError));
   }
 
   public login(loginUser: LoginUser): Observable<JwtDTO> {

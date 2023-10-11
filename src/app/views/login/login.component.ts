@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   user!: UserModule;
   isLogged = false;
   loginUser!: LoginUser;
+  loading = false;
 
   constructor(
     private userService: UserService,
@@ -41,16 +42,18 @@ export class LoginComponent implements OnInit {
     this.loginUser = new LoginUser(
       this.email.trim(), this.password.trim()
     );
-
+    this.loading = true;
     this.authService.login(this.loginUser).subscribe(
       data => {
         this.isLogged = true;
         this.tokenService.setToken(data.access_token);
         this.tokenService.setUserId(data.user_id);
         this.router.navigate(['/search']);
+        this.loading = false;
       },
       (error: any) => {
         this.wrongCredentials = true;
+        this.loading = false;
       }
     );
   }

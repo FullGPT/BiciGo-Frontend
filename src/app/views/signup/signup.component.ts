@@ -4,7 +4,9 @@ import { UserDtoModule } from 'src/app/models/userDto.module';
 import { UserModule } from 'src/app/models/user.module';
 import {UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
+import { LoginUser } from 'src/app/models/login-user';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +18,7 @@ export class SignupComponent {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private tokenService: TokenService,
     private router: Router
   ) {
     this.RegisterData = {} as UserDtoModule;
@@ -23,6 +26,7 @@ export class SignupComponent {
   control!: boolean;
   userModel!: UserModule;
   firstTry: boolean = true;
+  loading = false;
 
   nombreControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -51,22 +55,25 @@ export class SignupComponent {
       currentDate.getMonth(),
       currentDate.getDate()
     );
-    /*this.RegisterData.userBirthDate = '1999-01-01';
+    this.RegisterData.userBirthDate = '1999-01-01';
     this.RegisterData.imageData = 'https://robohash.org/' + this.RegisterData.userFirstName;
-    this.authService.register(this.RegisterData).subscribe(
+    this.RegisterData.userPhone = "987654321";
+    this.RegisterData.role = "USER";
+    this.loading = true;
+    this.authService.newuser(this.RegisterData).subscribe(
       (response) => {
-        this.authService
-          .login(this.RegisterData.userEmail, this.RegisterData.userPassword)
-          .subscribe((response: any) => {
-            localStorage.setItem('token', response.access_token);
-            localStorage.setItem('id', response.user_id);
-            this.router.navigate(['/search']);
-          });
+        this.authService.login(new LoginUser(this.RegisterData.userEmail, this.RegisterData.userPassword)).subscribe();
+        this.tokenService.setToken(response.access_token);
+        this.tokenService.setUserId(response.user_id);
+        this.router.navigate(['/search']);
+        this.loading = false;
       },
       (error) => {
         this.firstTry = false;
+        this.loading = false;
+        console.log(error);
       }
-    );*/
+    );
   }
 
   validateStart() {

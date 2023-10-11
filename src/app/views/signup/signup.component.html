@@ -73,9 +73,14 @@
 
         <mat-error *ngIf="!validatePassword()"> Confirma ambas contraseñas </mat-error>
 
-        <div *ngIf="validatePassword()">
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Empezar</button>
+        <div *ngIf="validatePassword() && !loading else elseBlock">
+          <button type="submit" class="btn btn-primary btnEmpezar mt-4 mb-2" (click)="onSubmit()">Empezar</button>
         </div>
+        <ng-template #elseBlock>
+          <div class="spinner mt-4">
+            <mat-progress-spinner mode="indeterminate" [diameter]="25"></mat-progress-spinner>
+          </div>
+        </ng-template>
         <mat-error *ngIf="this.control == false"> Completa correctamente la información </mat-error>
       </form>
     </div>
