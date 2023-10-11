@@ -6,4 +6,5 @@ export interface UserDtoModule {
   userPhone: string;
   userBirthDate: string;
   imageData: string;
+  role: string;
 }

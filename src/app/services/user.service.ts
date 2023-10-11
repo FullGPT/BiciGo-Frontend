@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { UserModule } from '../models/user.module';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,10 @@ export class UserService {
   base_Url = 'https://bicigo-service.onrender.com/api/leadyourway/v1/users';
   httpOptions = this.getHttpOptions(); // Agregar la propiedad httpOptions
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   private getHttpOptions(): { headers: HttpHeaders } {
-    const token = localStorage.getItem('token');
+    const token = this.tokenService.getToken();
     const headers = new HttpHeaders({
       'Content-type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -77,7 +78,7 @@ export class UserService {
   }
 }
 
-@Injectable({
+/*@Injectable({
   providedIn: 'root',
 })
 export class AuthService {
@@ -115,4 +116,4 @@ export class AuthService {
       .post<UserModule>(`${this.base_Url}/register`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-}
+}*/

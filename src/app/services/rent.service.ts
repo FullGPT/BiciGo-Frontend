@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { RentModule } from '../models/rent.module';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { RentModule } from '../models/rent.module';
 export class RentService {
   //private base_Url = 'http://localhost:8080/api/leadyourway/v1/rents';
   private base_Url = 'https://bicigo-service.onrender.com/api/leadyourway/v1/rents';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private tokenService: TokenService) {}
   //httpOptions = {
   //headers: new HttpHeaders({
   //'Content-type': 'application/json',
@@ -36,7 +37,7 @@ export class RentService {
   }
 
   private getHttpOptions(): { headers: HttpHeaders } {
-    const token = localStorage.getItem('token');
+    const token = this.tokenService.getToken();
     const headers = new HttpHeaders({
       'Content-type': 'application/json',
       Authorization: `Bearer ${token}`,

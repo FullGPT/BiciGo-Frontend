@@ -4,6 +4,7 @@ import { UserModule } from 'src/app/models/user.module';
 import { UserService } from 'src/app/services/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,7 +20,7 @@ export class ProfileComponent {
   fromDate: NgbDate;
   toDate: NgbDate | null = null;
 
-  constructor(private userService: UserService, private rout: Router, calendar: NgbCalendar) {
+  constructor(private userService: UserService, private rout: Router, calendar: NgbCalendar, private tokenService: TokenService) {
     this.UserData = {} as UserModule;
 
     this.fromDate = calendar.getToday();
@@ -35,18 +36,14 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('id');
+    this.userId = this.tokenService.getUserId();
     if (this.userId != null) {
       this.getUser();
     }
   }
 
   logout() {
-    localStorage.removeItem('id');
-    localStorage.removeItem('bicycleId');
-    localStorage.removeItem('toDate');
-    localStorage.removeItem('fromDate');
-    localStorage.removeItem('token');
+    this.tokenService.logOut();
     this.rout.navigate(['/home']);
   }
 

@@ -5,6 +5,7 @@ import { BicycleModule } from 'src/app/models/bicycle.module';
 import { BicycleService } from 'src/app/services/bicycle.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-search-bicycle',
@@ -25,9 +26,12 @@ export class SearchBicycleComponent {
 
   ngOnInit(): void {
     this.getAllBicycles();
-    this.userService.getItem(localStorage.getItem('id')).subscribe((user) => {
+    if(this.tokenService.getToken()){
       this.loggedIn = true;
-    });
+    } else {
+      this.loggedIn = false;
+      this.router.navigate(["/home"]);
+    }
   }
 
   getBicycles(): void {
@@ -63,6 +67,7 @@ export class SearchBicycleComponent {
   constructor(
     calendar: NgbCalendar,
     private bicycleService: BicycleService,
+    private tokenService: TokenService,
     private router: Router,
     private userService: UserService
   ) {

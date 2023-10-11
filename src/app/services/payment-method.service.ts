@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { CardDtoModule } from '../models/cardDto.module';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,12 +10,12 @@ import { CardDtoModule } from '../models/cardDto.module';
 export class PaymentMethodService {
   //private base_Url = 'http://localhost:8080/api/leadyourway/v1/cards';
   private base_Url = 'https://bicigo-service.onrender.com/api/leadyourway/v1/cards';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      Authorization: 'Bearer ' + this.tokenService.getToken(),
     }),
   };
 

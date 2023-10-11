@@ -19,7 +19,7 @@
           <a class="nav-link" href="/home/#contact">Contacto</a>
         </li>
       </ul>
-      <div class="btn-end">
+      <div class="btn-end" *ngIf="!loggedIn">
         <a class="btn nav-item btn-outline-primary mx-3" href="/login"> Iniciar Sesión </a>
         <a class="btn nav-item bg-dark text-light m-3" href="/signup"> Registrarse </a>
       </div>

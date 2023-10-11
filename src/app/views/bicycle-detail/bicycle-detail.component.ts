@@ -4,6 +4,7 @@ import { BicycleService } from 'src/app/services/bicycle.service';
 import { Router } from '@angular/router';
 import { UserModule } from 'src/app/models/user.module';
 import { UserService } from 'src/app/services/user.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-bicycle-detail',
@@ -24,7 +25,8 @@ export class BicycleDetailComponent {
   constructor(
     private bicycleService: BicycleService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private tokenService: TokenService
   ) {
     this.bicycleId = Number(localStorage.getItem('bicycleId'));
     this.toDate = localStorage.getItem('toDate');
@@ -33,7 +35,7 @@ export class BicycleDetailComponent {
   }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('id') || '';
+    this.userId = this.tokenService.getUserId() || '';
     this.getBicycle();
   }
 

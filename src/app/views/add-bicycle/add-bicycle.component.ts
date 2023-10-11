@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { BicycleModule } from 'src/app/models/bicycle.module';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogBoxComponent } from 'src/app/components/toasts/dialog-box/dialog-box.component';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-add-bicycle',
   templateUrl: './add-bicycle.component.html',
@@ -25,7 +26,8 @@ export class AddBicycleComponent {
     private router: Router,
     private bicycleService: BicycleService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tokenService: TokenService
   ) {
     this.firstFormGroup = new FormGroup({
       title: new FormControl('', Validators.required),
@@ -42,7 +44,7 @@ export class AddBicycleComponent {
     this.thirdFormGroup = new FormGroup({
       image: new FormControl(''),
     });
-    this.id = localStorage.getItem('id');
+    this.id = tokenService.getUserId();
   }
 
   ngOnInit() {
