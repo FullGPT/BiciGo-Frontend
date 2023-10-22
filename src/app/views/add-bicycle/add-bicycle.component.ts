@@ -46,17 +46,17 @@ export class AddBicycleComponent {
   }
 
   ngOnInit() {
-    this.userService.getItem(this.id).subscribe(
-      (error) => {
-        const dialogRef: MatDialogRef<any> = this.dialog.open(DialogBoxComponent, {
-          data: {
-            title: 'Error',
-            message: 'Porfavor inicie sesion para poder publicar una bicicleta',
-          },
-        });
-        this.router.navigate(['/home']);
-      }
-    );
+    /*
+    this.userService.getItem(this.id).subscribe((error) => {
+      const dialogRef: MatDialogRef<any> = this.dialog.open(DialogBoxComponent, {
+        data: {
+          title: 'Error',
+          message: 'Porfavor inicie sesion para poder publicar una bicicleta',
+        },
+      });
+      console.log(this.id);
+      this.router.navigate(['/home']);
+    });*/
   }
 
   onSubmit() {
